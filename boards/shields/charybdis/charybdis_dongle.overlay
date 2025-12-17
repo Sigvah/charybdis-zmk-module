@@ -3,15 +3,18 @@
 / {
     chosen {
         zmk,kscan = &mock_kscan;
-        zmk,matrix-transform = &default_transform;
+        zmk,physical-layout = &charybdis_5col_layout;
+        zmk,matrix-transform = &five_column_transform;
     };
 
     mock_kscan: kscan_1 {
         compatible = "zmk,kscan-mock";
-        columns = <12>;
+        columns = <10>;
         rows = <4>;
         events = <0>;
     };
 };
 
-/delete-node/ &charybdis_position_map;
+&charybdis_position_map {
+    /delete-property/ complete;
+};
